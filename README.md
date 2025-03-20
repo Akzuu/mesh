@@ -4,6 +4,10 @@ Small application to try out React Router framework.
 
 ## Getting Started
 
+### Requirements
+
+Node.js v20.9.0 recommended
+
 ### Installation
 
 Install the dependencies:

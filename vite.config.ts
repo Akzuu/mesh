@@ -3,10 +3,25 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+const { NODE_ENV } = process.env;
+
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   ssr: {
-    noExternal: ["@mui/icons-material"],
+    noExternal:
+      NODE_ENV === "production"
+        ? [
+            "@mui/icons-material",
+            "@mui/system",
+            "@mui/material",
+            "@mui/x-date-pickers",
+            "@mui/utils",
+            "@mui/x-data-grid",
+            "@mui/x-tree-view",
+            "@mui/x-internals",
+            "@mui/styled-engine",
+          ]
+        : ["@mui/icons-material"],
   },
   optimizeDeps: {
     include: ["@mui/icons-material"],
